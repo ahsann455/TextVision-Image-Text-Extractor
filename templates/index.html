@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extract Text From Image</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <style>
+    /* ... (existing styles remain unchanged) ... */
+
+    .navbar-brand {
+      color: #fff; /* Set header text color to white */
+      font-weight: bold; /* Make the text bold */
+      font-size: 28px; /* Increase the font size */
+      font-family: 'Poppins', sans-serif; /* Apply a modern font */
+    }
+
+    .subtext {
+      font-size: 22px; /* Adjust the subtext font size */
+    }
+
+    .github-icon {
+      color: #fff;
+      font-size: 28px; /* Increase the icon size */
+      margin-left: 15px; /* Adjust the margin for spacing */
+    }
+
+    .developed-text {
+      color: #fff;
+      font-size: 24px; /* Increase the font size */
+      font-weight: bold; /* Make the text bold */
+    }
+
+    .instructions {
+      font-size: 18px; /* Increase the font size for instructions */
+    }
+
+    .center-text {
+      text-align: center; /* Center align the text */
+    }
+
+    .my-website-button,
+    .github-button {
+      display: inline-block;
+      margin-top: 10px; /* Adjust the margin for spacing */
+      background-color: #333;
+      color: #fff;
+      padding: 8px 20px;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .github-button {
+      margin-left: 10px; /* Adjust the margin for spacing */
+    }
+
+    .center-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .submit-button {
+      margin-top: 20px; /* Adjust the margin for spacing */
+    }
+
+    .modern-header {
+      background-color: #007bff; /* Set solid background color */
+      padding: 20px 0; /* Adjust padding */
+      border-radius: 10px; /* Add rounded corners */
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">
+    TextVision: <span class="subtext">Image Text Extractor</span>
+  </a>
+  <div class="ml-auto">
+    <span class="developed-text">Developed by <a href="https://ahsank.me/" target="_blank" rel="noopener noreferrer" style="color: #fff; text-decoration: none;">Muhammad Ahsan Khan</a></span>
+    <a class="github-icon" href="https://github.com/ahsann455" target="_blank">
+      <i class="fab fa-github"></i>
+    </a>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-header bg-primary text-white text-center rounded-3 modern-header">
+      <h3 class="card-title" style="font-family: 'Poppins', sans-serif;">Extract Text From Image</h3>
+    </div>
+    <div class="card-body">
+      <form action="/submit" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="imageInput">Image URL:</label>
+          <input type="text" class="form-control" id="imageInput" name="image_url" required>
+        </div>
+        <div class="center-button">
+          <button type="submit" class="btn btn-success submit-button">Submit</button>
+        </div>
+        <p class="mt-2 instructions">To extract text from images in files on your local computer, visit <a href="https://postimg.cc/" target="_blank">https://postimg.cc/</a>, upload your image there, and then copy and paste the "Direct Link" of the uploaded image to the ImageURL above.</p>
+      </form>
+    </div>
+  </div>
+
+  {% if prediction %}
+  <div class="mt-4">
+    <h4>Predicted Text:</h4>
+    <p class="bg-light p-3">{{ prediction }}</p>
+    <h4>Image:</h4>
+    <img src="{{ img_path }}" class="img-fluid" alt="Uploaded Image">
+  </div>
+  {% endif %}
+</div>
+
+<div class="center-text">
+  <a href="https://ahsank.me/" target="_blank" rel="noopener noreferrer" class="my-website-button">My Website</a>
+  <a href="https://github.com/ahsann455" target="_blank" rel="noopener noreferrer" class="github-button"><i class="fab fa-github"></i> GitHub</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

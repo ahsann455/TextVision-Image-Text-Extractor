@@ -1,0 +1,32 @@
+/* Custom styles for the Extract Text From Image app */
+
+body {
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.container {
+  flex: 1; /* Take remaining vertical space */
+}
+
+.form-horizontal {
+  margin-bottom: 40px;
+}
+
+.result-box {
+  background-color: LightGray;
+  padding: 70px 35px;
+}
+
+.footer {
+  text-align: center;
+  font-size: 14px;
+  padding: 10px 0;
+  background-color: #f8f9fa;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
